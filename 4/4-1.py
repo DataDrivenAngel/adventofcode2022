@@ -16,11 +16,22 @@ for pair in input:
     EE1 = int(elf1[1])
     
     # see if either range is fully inside the other.
-    if  (SE0 <= SE1 and EE0 >= EE1) or (SE1 <= SE0 and EE1 >= EE0):
+    if  ((SE0 <= SE1 and EE0 >= EE1) or (SE1 <= SE0 and EE1 >= EE0) or
+        (SE0 <= SE1 and SE1 <= EE0) or (SE1 <= SE0 and SE0 <= EE1) or
+        (SE0 <= EE1 and EE1 <= EE0) or (SE1 <= EE0 and EE0 <= EE1)):
+        # SE0 ---------- EE0       OR      SE0 --- EE0
+        #     SE1 -- EE1           OR  SE1 ----------- EE1
+        # SE0 ---- EE0             OR       SE0 ---  
+        #     SE1 --               OR  SE1 ----- EE1
+        # inverse etc
+
+
+
+
 
         # increment 
         fully_overlapping_pairs += 1 
 
 print(fully_overlapping_pairs)
 
-# 507 is correct!
+# 897 is correct!
